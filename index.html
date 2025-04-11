@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New York</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header id="home">
+        <h1><a href="#home">NY</a></h1>
+
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#centralPark">Central Park</a></li>
+                <li><a href="#broadway">Broadway</a></li>
+                <li><a href="#museuArte">Museu</a></li>
+                <li><a href="#empireState">Empire State</a></li>
+                <li><a href="#estatuaLiberdade">Estátua</a></li>
+                <li><a href="#timesSquare">Times Square</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bg-imagem">
+            <img src="assets/images/img01-bg.jpeg" alt="Vista de Nova York">
+            <aside>
+                <p>Nova Iorque começou como uma colônia holandesa em 1624. Hoje é uma das cidades mais famosas do mundo, conhecida por seus arranha-céus e locais icônicos como Times Square e Central Park.</p>
+            </aside>
+        </section>
+
+        <section class="cards">
+            <h1>Pontos Turísticos de Nova Iorque</h1>
+
+            <article class="cards-container">
+                <article class="card" id="centralPark">
+                    <img src="assets/images/img02-centralpark.jpeg" alt="Central Park">
+                    <div class="card-content">
+                        <h2>Central Park</h2>
+                        <p>O maior parque urbano de Nova York, com 341 hectares de área verde no coração de Manhattan. Inaugurado em 1858, é um refúgio natural com lagos, trilhas e atrações culturais.</p>
+                    </div>
+                </article>
+
+                <article class="card" id="broadway">
+                    <img src="assets/images/img03-broadway.jpeg" alt="Broadway">
+                    <div class="card-content">
+                        <h2>Broadway</h2>
+                        <p>Famosa por seus teatros e musicais de renome mundial. O distrito teatral está localizado na área da Times Square, com produções que atraem milhões de visitantes anualmente.</p>
+                    </div>
+                </article>
+
+                <article class="card" id="museuArte">
+                    <img src="assets/images/img04-museu.jpeg" alt="Museu Metropolitano">
+                    <div class="card-content">
+                        <h2>Museu Metropolitano</h2>
+                        <p>Um dos maiores museus de arte do mundo, com coleções que abrangem 5.000 anos de história. Localizado à beira do Central Park, é um marco cultural da cidade.</p>
+                    </div>
+                </article>
+
+                <article class="card" id="empireState">
+                    <img src="assets/images/img05-empirestate.jpeg" alt="Empire State">
+                    <div class="card-content">
+                        <h2>Empire State</h2>
+                        <p>Arranha-céu icônico com 443m de altura. Sua plataforma de observação oferece vistas deslumbrantes da cidade. Foi o edifício mais alto do mundo por 40 anos.</p>
+                    </div>
+                </article>
+
+                <article class="card" id="estatuaLiberdade">
+                    <img src="assets/images/img06-estatua.jpeg" alt="Estátua da Liberdade">
+                    <div class="card-content">
+                        <h2>Estátua da Liberdade</h2>
+                        <p>Símbolo universal de liberdade, presente da França em 1886. Localizada na Ilha da Liberdade, pode ser visitada de barco, com acesso ao seu mirante.</p>
+                    </div>
+                </article>
+
+                <article class="card" id="timesSquare">
+                    <img src="assets/images/img07-timessquare.jpeg" alt="Times Square">
+                    <div class="card-content">
+                        <h2>Times Square</h2>
+                        <p>O cruzamento mais famoso do mundo, conhecido por suas luzes neon e telões gigantes. Centro de entretenimento e ponto de encontro para celebrações como o Réveillon.</p>
+                    </div>
+                </article>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Desenvolvido por Samuel Ramos</p>
+            <div class="social-links">
+                <a href="https://github.com/chiefzz7"><img src="assets/images/img08-logo_github.png" alt="GitHub"></a>
+                <a href="https://www.instagram.com/ramozz.14/#"><img src="assets/images/img09-logo_insta.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Toggle Functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Prevent scrolling when menu is open
+            if (!isExpanded) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
